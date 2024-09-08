@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/head') %>
+<body>
+  <%- include('partials/navbar') %>
+
+  <div class="container">
+    <h1>Meme Overview</h1>
+
+    <!-- Search Form -->
+    <form method="GET" action="/memes">
+      <input type="text" name="search" placeholder="Search for memes by name" class="form-control mb-3">
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% memes.forEach(function(meme) { %>
+        <tr>
+          <td><img src="<%= meme.url %>" alt="<%= meme.name %>" style="width: 20%;"></td>
+          <td><%= meme.name %></td>
+          <td>
+            <% if (loggedIn) { %>
+              <a href="/meme/<%= meme.id %>" class="btn btn-primary">Details</a>
+            <% } else { %>
+              <a href="/login" class="btn btn-secondary">Login to view</a>
+            <% } %>
+          </td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+
+  <%- include('partials/scripts') %>
+</body>
+</html>

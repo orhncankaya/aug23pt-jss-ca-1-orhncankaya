@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/head') %>
+<body>
+  <%- include('partials/navbar') %>
+
+  <div class="container">
+    <h1>Meme Details</h1>
+
+    <div class="card mb-3">
+      <img src="<%= meme.url %>" alt="<%= meme.name %>" class="card-img-top">
+      <div class="card-body">
+        <h5 class="card-title"><%= meme.name %></h5>
+        <p class="card-text">ID: <%= meme.id %></p>
+        <p class="card-text">Dimensions: <%= meme.width %> x <%= meme.height %></p>
+        <p class="card-text"><a href="<%= meme.url %>" target="_blank">View Original</a></p>
+      </div>
+    </div>
+
+    <a href="/memes" class="btn btn-secondary">Back to Meme Overview</a>
+  </div>
+
+  <%- include('partials/scripts') %>
+</body>
+</html>
